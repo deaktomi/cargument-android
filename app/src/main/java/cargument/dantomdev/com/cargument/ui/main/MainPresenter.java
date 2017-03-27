@@ -1,19 +1,24 @@
 package cargument.dantomdev.com.cargument.ui.main;
 
+import javax.inject.Inject;
+
 import cargument.dantomdev.com.cargument.ui.Presenter;
+import cargument.dantomdev.com.cargument.ui.newmessage.NewMessagePresenter;
 
 public class MainPresenter extends Presenter<MainScreen> {
-
-    private static MainPresenter instance = null;
-
-    private MainPresenter() {
+    public MainPresenter() {
     }
 
-    public static MainPresenter getInstance() {
-        if (instance == null) {
-            instance = new MainPresenter();
-        }
-        return instance;
+    public void refreshMessages(){
+
+    }
+
+    public void openMessage(int id){
+
+    }
+
+    public void newMessage(){
+
     }
 
     @Override

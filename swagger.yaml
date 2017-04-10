@@ -1,0 +1,187 @@
+# this is an example of the Cargument API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Cargument API
+  description: Communicate with the server
+  version: "1.0.0"
+# the domain of the service
+host: api.cargument.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /conversations:
+    get:
+      summary: Get the Conversations
+      description: The user gets all the relevant conversation data.
+      parameters:
+        - name: userId
+          in: query
+          description: The identifier of the user
+          type: string
+          required: true
+      tags:
+        - Conversations
+      responses:
+        200:
+          description: An array of conversations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Conversation'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /conversations/details:
+    get:
+      summary: Details of a conversation
+      description: All the relevant data to a conversation. Basically the messages
+      tags:
+        - Conversations
+      parameters:
+        - name: coversationId
+          in: query
+          description: The identifier of the conversation
+          type: integer
+          required: true
+      responses:
+        200:
+          description: Details of a conversation
+          schema:
+            $ref: '#/definitions/Conversation'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /conversations/new:
+    post:
+      summary: Create a new conversation
+      description: Create a new conversation with the given address and an initialized message.
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Conversation'
+      tags:
+        - Conversations
+      responses:
+        200:
+          description: The conversation was created successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /messages/add:
+    post:
+      summary: Add a new message to a conversation
+      description: Create a new conversation with the given address and an initialized message.
+      parameters:
+        - name: conversationId
+          in: header
+          type: integer
+          description: The identifier of he conversation
+          required: true
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Message'
+      tags:
+        - Conversations
+      responses:
+        200:
+          description: The conversation was created successfully
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /login:
+    post:
+      summary: Login the user
+      description: Login the user
+      parameters:
+        - name: regNumber
+          in: query
+          type: string
+          required: true
+      tags:
+        - Login
+      responses:
+        200:
+          description: The user object
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+definitions:
+  
+  Conversation:
+    type: object
+    properties:
+      conversationId:
+        type: integer
+        format: int32
+        description: The identifier of he conversation
+      user1:
+         $ref: "#/definitions/User"
+      user2:
+         $ref: "#/definitions/User"
+      newMessages:
+        type: integer
+        format: int32
+        description: The number of nw messages
+      lastMessageDate:
+        type: string
+        description: The date of the last message. YYYY-MM-DD HH:MM
+      messages:
+        type: array
+        items:
+          $ref: "#/definitions/Message"
+
+  Message:
+    type: object
+    properties:
+      conversationId:
+        type: integer
+        format: int32
+      senderId:
+        type: string
+        description: The identifier of the user.
+      body:
+        type: string
+        description: The body of the message
+
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        description: The name of the user.
+      regNumber:
+        type: string
+        description: The registration number of the user.
+      
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

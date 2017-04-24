@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     }
 
     @Override
+    public void showMessage(String message) {
+
+    }
+
+    @Override
     public void showMessages() {
 
     }

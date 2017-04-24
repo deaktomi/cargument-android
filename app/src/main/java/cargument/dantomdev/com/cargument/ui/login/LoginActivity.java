@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import cargument.dantomdev.com.cargument.CargumentApplication;
 import cargument.dantomdev.com.cargument.R;
+import cargument.dantomdev.com.cargument.model.User;
 import cargument.dantomdev.com.cargument.ui.main.MainPresenter;
 
 public class LoginActivity extends AppCompatActivity implements LoginScreen {
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
     }
 
     @Override
-    public void navigateToMain() {
+    public void navigateToMain(User user) {
 
     }
 }

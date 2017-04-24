@@ -7,9 +7,13 @@ import cargument.dantomdev.com.cargument.interactor.conversation.ConversationInt
 import cargument.dantomdev.com.cargument.repositoy.RepositoryModule;
 import cargument.dantomdev.com.cargument.ui.UIModule;
 import cargument.dantomdev.com.cargument.ui.conversation.ConversationActivity;
+import cargument.dantomdev.com.cargument.ui.conversation.ConversationPresenter;
 import cargument.dantomdev.com.cargument.ui.login.LoginActivity;
+import cargument.dantomdev.com.cargument.ui.login.LoginPresenter;
 import cargument.dantomdev.com.cargument.ui.main.MainActivity;
+import cargument.dantomdev.com.cargument.ui.main.MainPresenter;
 import cargument.dantomdev.com.cargument.ui.newmessage.NewMessageActivity;
+import cargument.dantomdev.com.cargument.ui.newmessage.NewMessagePresenter;
 import dagger.Component;
 
 @Singleton
@@ -20,5 +24,9 @@ public interface CargumentApplicationComponent {
     void inject(NewMessageActivity newMessageActivity);
     void inject(ConversationActivity conversationActivity);
     void inject(ConversationInteractor favouritesInteractor);
+    void inject(ConversationPresenter conversationPresenter);
+    void inject(LoginPresenter loginPresenter);
+    void inject(MainPresenter mainPresenter);
+    void inject(NewMessagePresenter newMessagePresenter);
 
 }

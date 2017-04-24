@@ -7,6 +7,8 @@ import javax.inject.Inject;
 
 import cargument.dantomdev.com.cargument.CargumentApplication;
 import cargument.dantomdev.com.cargument.R;
+import cargument.dantomdev.com.cargument.model.Conversation;
+import cargument.dantomdev.com.cargument.model.Message;
 import cargument.dantomdev.com.cargument.ui.login.LoginPresenter;
 
 public class ConversationActivity extends AppCompatActivity implements ConversationScreen {
@@ -34,12 +36,17 @@ public class ConversationActivity extends AppCompatActivity implements Conversat
     }
 
     @Override
-    public void showMessages() {
+    public void showMessage(String message) {
 
     }
 
     @Override
-    public void sendMessage() {
+    public void showMessages(Conversation conversation) {
+
+    }
+
+    @Override
+    public void sendMessage(Message message) {
 
     }
 }

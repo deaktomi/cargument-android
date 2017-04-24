@@ -6,20 +6,26 @@ import cargument.dantomdev.com.cargument.interactor.conversation.events.GetConve
 import cargument.dantomdev.com.cargument.interactor.user.events.GetUserEvent;
 import cargument.dantomdev.com.cargument.model.Conversation;
 import cargument.dantomdev.com.cargument.model.User;
+import cargument.dantomdev.com.cargument.network.login.LoginApi;
 import cargument.dantomdev.com.cargument.repositoy.Repository;
 import de.greenrobot.event.EventBus;
 
 public class UserInteractor {
     @Inject
     Repository repository;
+
     @Inject
     EventBus bus;
+
+    @Inject
+    LoginApi loginApi;
 
     public void getUser(String userId){
         GetUserEvent event = new GetUserEvent();
         try {
-            User user = repository.getUser(userId);
-            event.setUser(user);
+            User u = loginApi.loginPost(userId).execute().body();
+            // User user = repository.getUser(userId);
+            event.setUser(u);
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);

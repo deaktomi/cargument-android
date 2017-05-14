@@ -2,6 +2,7 @@ package cargument.dantomdev.com.cargument.mock.interceptors;
 
 import android.net.Uri;
 
+import cargument.dantomdev.com.cargument.model.Message;
 import cargument.dantomdev.com.cargument.network.NetworkConfig;
 import cargument.dantomdev.com.cargument.repositoy.MemoryRepository;
 import cargument.dantomdev.com.cargument.utils.GsonHelper;
@@ -20,10 +21,21 @@ public class ConversationsMock {
         Headers headers = request.headers();
 
 
-        if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "conversation") && request.method().equals("POST")) {
+        if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "conversations") && request.method().equals("POST")) {
             responseString = "ERROR No post";
             responseCode = 503;
-        }else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "conversation") && request.method().equals("Get")) {
+        } else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "conversations/details") && request.method().equals("GET")) {
+            MemoryRepository memoryRepository = new MemoryRepository();
+            memoryRepository.open(null);
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getConversationDetails(1));
+            responseCode = 200;
+        } else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "messages/add") && request.method().equals("GET")) {
+            MemoryRepository memoryRepository = new MemoryRepository();
+            memoryRepository.open(null);
+            responseString = "Oh yeah";
+            memoryRepository.addMessage(new Message(1L, "1", "WOW", 1));
+            responseCode = 200;
+        } else if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "conversations") && request.method().equals("GET")) {
             MemoryRepository memoryRepository = new MemoryRepository();
             memoryRepository.open(null);
             responseString = GsonHelper.getGson().toJson(memoryRepository.getConversations("1"));

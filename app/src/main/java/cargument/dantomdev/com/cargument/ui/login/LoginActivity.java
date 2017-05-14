@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoginScreen {
     @Override
     public void navigateToMain(User user) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("userId", user.getId());
         startActivity(intent);
     }
 }

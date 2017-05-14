@@ -7,6 +7,7 @@ import java.util.concurrent.Executors;
 
 import javax.inject.Singleton;
 
+import cargument.dantomdev.com.cargument.network.login.LoginApi;
 import cargument.dantomdev.com.cargument.ui.conversation.ConversationPresenter;
 import cargument.dantomdev.com.cargument.ui.login.LoginPresenter;
 import cargument.dantomdev.com.cargument.ui.main.MainPresenter;
@@ -14,6 +15,7 @@ import cargument.dantomdev.com.cargument.ui.newmessage.NewMessagePresenter;
 import dagger.Module;
 import dagger.Provides;
 import de.greenrobot.event.EventBus;
+import retrofit2.Retrofit;
 
 @Module
 public class UIModule {

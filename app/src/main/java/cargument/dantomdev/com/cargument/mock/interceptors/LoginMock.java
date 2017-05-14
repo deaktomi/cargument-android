@@ -23,7 +23,7 @@ public class LoginMock {
         if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "login") && request.method().equals("POST")) {
             MemoryRepository memoryRepository = new MemoryRepository();
             memoryRepository.open(null);
-            responseString = GsonHelper.getGson().toJson(memoryRepository.getUser("1"));
+            responseString = GsonHelper.getGson().toJson(memoryRepository.getUser("ABC-123"));
             responseCode = 200;
         }else if (uri.getPath().equals(NetworkConfig.ENDPOINT_PREFIX + "login") && request.method().equals("Get")) {
             responseString = "No GET";

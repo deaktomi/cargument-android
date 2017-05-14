@@ -53,11 +53,11 @@ public class ConversationPresenter extends Presenter<ConversationScreen> {
         }
     }
 
-    public void addNewMessage(final Message message){
+    public void addNewMessage(final int conversationId, final Message message){
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                conversationInteractor.addNewMessage(message);
+                conversationInteractor.addNewMessage(conversationId, message);
             }
         });
     }

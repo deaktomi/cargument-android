@@ -28,12 +28,13 @@ public class MockInterceptor implements Interceptor {
         Headers headers = request.headers();
 
 
-        if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "Todos")) {
-            return TodoMock.process(request);
+        if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "login")) {
+            return LoginMock.process(request);
         }
-
-
-
+        if (uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "conversations") ||
+                uri.getPath().startsWith(NetworkConfig.ENDPOINT_PREFIX + "messages")) {
+            return ConversationsMock.process(request);
+        }
 
         return makeResponse(request, headers, 404, "Unknown");
 

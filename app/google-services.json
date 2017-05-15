@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1061142198003",
+    "project_id": "firebase-cargument"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061142198003:android:9e7e76affdaaf86e",
+        "android_client_info": {
+          "package_name": "cargument.dantomdev.com.cargument"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGVGHDIXkYEr_8fB1N3w-Uho_6frUKecs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-55360272-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

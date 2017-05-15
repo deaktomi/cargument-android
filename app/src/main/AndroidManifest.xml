@@ -21,6 +21,9 @@
         </activity>
         <activity android:name=".ui.newmessage.NewMessageActivity" />
         <activity android:name=".ui.conversation.ConversationActivity" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="7e543adf66fd4f229cb4258203c08713d6e581da" />
     </application>
 
 </manifest>
